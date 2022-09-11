@@ -16,7 +16,7 @@ letterInputRef.current.focus();
     return (
     <div className="game">
         <p className="points">
-            <span>Pontuação:{ServiceWorkerRegistration}</span>
+            <span>Pontuação:{score}</span>
         </p>
         <h1>Advinhe a palavra</h1>
         <h3 className="tip">
