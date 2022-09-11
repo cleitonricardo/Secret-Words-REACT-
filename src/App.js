@@ -70,7 +70,7 @@ function App() {
       return;
     }
 
-    if(letter.includes(normalizedLetter)) {
+    if(letters.includes(normalizedLetter)) {
         setGuessedLetters((actualGuessedLetters)=>[
           ...actualGuessedLetters,
           normalizedLetter
@@ -79,14 +79,32 @@ function App() {
       setWrongLetters((actualWrongLetters)=>[
         ...actualWrongLetters,
         normalizedLetter
-      ])
+      ]);
+
+      setGuesses((actualGuesses)=> actualGuesses-1);
+
     }
 
 
   }
+  const clearLetterStates = () => {
+    setGuessedLetters([]);
+    setWrongLetters([]);
+  }
+
+  useEffect (() => {
+    if(guesses <=0){
+
+      clearLetterStates();
+      setGameStage(stages[2].name);
+    }
+  },[guesses])
 
   // restarts the game
     const retry =()=>{
+
+      setScore(0);
+      setGuesses(3);
       setGameStage(stages[0].name)
     }
 
